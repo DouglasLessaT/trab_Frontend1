@@ -5,25 +5,30 @@ class Header extends HTMLElement{
 
     connectedCallback(){
         this.innerHTML = `
+        <link rel="stylesheet" href="css/estilo.css">
         <header>
     <nav class="navbar">
         <div class="logotipo">
             <a href="index.html" class="logo"><img src="https://unisales.br/wp-content/uploads/2020/03/logo.svg" alt="unisaleslogo"></a>
         </div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="index.html">Home</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Curso</a></li>
-            <li class="nav-item"><a href="CadastroPeriodo.html">Cadastro de Periodo</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Desafio</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Salas</a></li>
-            <li class="nav-item"><a href="CadastroProfessores.html">Cadastro de Professores</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Horários</a></li>
-        </ul>
 
-        <div class="ghost">
-            <span garpaszinho></span>
-            <span garpaszinho></span>
-            <span garpaszinho></span>
+        <div class="nav-menu" >
+        <ul >
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class=" dropdown-trigger">
+            <div class ="dropdown-title">Cadastro</div>
+            <div class="dropdown-content">
+                <a href="index.html">Cadastro de Curso</a>
+                <a href="CadastroPeriodo.html">Cadastro de Periodo</a>
+                <a href="index.html">Cadastro de Desafio</a>
+                <a href="index.html">Cadastro de Salas</a>
+                <a href="CadastroProfessores.html">Cadastro de Professores</a>
+                <a href="index.html">Cadastro de Horários</a>
+            </div>
+        </ul>
+        </div>
+
+        
         </div>
     </nav>
 </header>
