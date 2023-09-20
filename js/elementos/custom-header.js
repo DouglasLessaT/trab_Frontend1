@@ -14,7 +14,7 @@ class Header extends HTMLElement{
 
         <div class="nav-menu" >
         <ul >
-            <li class="nav-item"><a href="index.html">Home</a></li>
+            <a href="index.html"><li class="nav-item">Home</li></a>
             <li class=" dropdown-trigger">
             <div class ="dropdown-title">Cadastro</div>
             <div class="dropdown-content">
