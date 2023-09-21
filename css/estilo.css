@@ -125,3 +125,6 @@ a {
 .input {
     margin-left: 23px;
 }
+#divConfirmarAlteracao{
+    display: none;
+}

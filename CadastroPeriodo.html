@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/elementos/custom-header.js" ></script>
     
-    <title>Tela inicio</title>
+    <title>Cadastro Periodo</title>
 </head>
 
 <body>
@@ -15,46 +15,54 @@
 
     <h1>Cadastro Periodo</h1>
 
-    <div class="box3">
-            <div class="container">
-                <div class="form">
-                    <div id="Período" class="combo">
-                        <label for="Período">Periodo Cursando</label>
-                        <input class="imput"  type="text" placeholder="Ex. Oitavo" name="Período" style="margin-left: 27px;">
-                    </div>
-                    
-                    <div id="qtdAluno" class="combo">
-                        <label for="qtdAluno">Quantidade de Alunos</label>
-                        <input class="imput" type="number" placeholder="Ex. 32" name="qtdAluno">
+    <div class="container">
+        <div class="box3">
+            <div class="form">
+                <div id="Período" class="combo">
+                    <label for="Período">Período Cursando</label>
+                    <input class="imput" type="text" placeholder="Ex. Oitavo" name="Período" style="margin-left: 27px;">
+                </div>
+
+                <div id="qtdAluno" class="combo">
+                    <label for="qtdAluno">Quantidade de Alunos</label>
+                    <input class="imput" type="number" placeholder="Ex. 32" name="qtdAluno">
+                </div>
+
+                <div id="Curso" class="combo">
+                    <label for="Curso">Cursando</label>
+                    <input class="imput" type="text" placeholder="TADS" name="Cursando" style="margin-left: 81px;">
+                </div>
+
+                <div class="navbar">
+                    <button class="btn btnInsert">Incluir</button>
+
+                    <div id="divConfirmarAlteracao" >
+                        <button id="botaoConfirmarAlteracao" class="btn btnUpdate">Incluir Alteração</button>
                     </div>
 
-                    <div id="Curso" class="combo">
-                        <label for="Curso">Cursando</label>
-                        <input class="imput" type="text" placeholder="TADS" name="Cursando" style="margin-left: 81px;">
-                    </div>
-                    
-                    <div class="navbar">
-                        <button  class="btn btnInsert">Incluir</button>           
-                    </div>
                 </div>
-        
-        
+            </div>
+
+            <div class="box4tabela">
                 <table class="tabela">
                     <thead>
                         <tr>
                             <th class="celula">Id</th>
-                            <th class="celula">Período </th>
+                            <th class="celula">Período</th>
                             <th class="celula">Quantidade de alunos</th>
                             <th class="celula">Curso</th>
+                            <th class="celula">Alterar</th>
+                            <th class="celula">Deletar</th>
                         </tr>
                     </thead>
                     <tbody>
-        
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
 
     <script src="js/CadastroPeriodo.js"></script>
 </body>
