@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/elementos/custom-header.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <link rel="stylesheet" href="css/estilo.css">
+    <custom-header></custom-header>
+    <div class="container">
+        <div class="box3"> 
+            
+        <!--Formulário, editar daqui pra baixo-->
+        <div class="form">
+            <div id="comboNumeroSala" class="combo">
+                <label for="numeroSala">Número da sala:</label>
+                <input id="numeroSala" value="" class="input" type="name" name="numeroSala">
+            </div>
+            <div id="comboAndarSala" class="combo">
+                <label for="andarSala">Andar da sala: </label>
+                <input id="andarSala" value="" type="input" name="andarSala">
+            </div>
+
+            <div class="botao">
+                <button id="botaoCriarSala" class="btn btnInsert">Incluir</button>
+            </div>
+        </div>
+
+        <!--Tabela-->
+        <table id="tabelaDadosSala" class="tabela">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Número da sala</th>
+                    <th>Andar</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="space">
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <!--Sabe Deus oq isso faz-->
+    <div class="sidebar">
+        <ul class="lista-professores">
+        </ul>
+    </div>
+
+    <script src="js/CadastroSala.js"></script>
+    
+</body>
+</html>
