@@ -90,17 +90,6 @@ a {
     justify-content: space-around;
 }
 
-.box3 {
-    border: solid 2px;
-    border-radius: 15px;
-
-    height: 30vw;
-    width: 70vw;
-    background: #fff;
-    margin: 0 auto;
-    padding: 20px 20px 20px 20px;
-}
-
 .botao {
     padding-top: 10px;
 }
@@ -115,7 +104,7 @@ a {
     border: solid 2px;
     border-radius: 15px;
 
-    height: 30vw;
+    min-height: 30vw;
     width: 70vw;
     background: #fff;
     margin: 0 auto;
