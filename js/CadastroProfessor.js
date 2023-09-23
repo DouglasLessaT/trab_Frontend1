@@ -1,19 +1,18 @@
-// Inicializa o contador
+
 let contador = 1;
 
-// Recupera a variável listaDadosProfessor do localStorage
+// recupera a variável listaDadosProfessor do localStorage
 const listaDadosProfessor = JSON.parse(localStorage.getItem('listaDadosProfessor')) || [];
 
-// Função para remover uma linha
+// remover uma linha
 const removeLine = (evt) => {
     const btn = evt.target;
     const linha = btn.parentElement.parentElement;
     const idx = linha.children[0].innerHTML;
 
-    // Remove a linha da tabela
     linha.remove();
 
-    // Remove o item correspondente da listaDadosProfessor
+    // vai remover o item corresponde a listadadosprofessores 
     const indice = idx - 1;
     listaDadosProfessor.splice(indice, 1);
 
@@ -24,28 +23,56 @@ const removeLine = (evt) => {
 
 // Função para alterar uma linha
 const alterarLine = (evt) => {
-    alert(`Você irá alterar um item`);
-    let nomeProfessor = prompt('Digite o nome do professor: ');
-    let matriculaProfessor = prompt('Digite a matrícula do professor: ');
-
-    const row = evt.target.parentElement.parentElement; // Acesse a linha corretamente
-    row.querySelector('td:nth-child(2)').textContent = nomeProfessor;
-    row.querySelector('td:nth-child(3)').textContent = matriculaProfessor;
-
-   // Atualize a listaDadosProfessor com os novos valores
-   const indice = row.querySelector('td:nth-child(1)').textContent;
-
-   /*console.log(listaDadosProfessor[indice].nomeProfessor);
-   console.log(typeof(listaDadosProfessor[indice].nomeProfessor));*/
-   listaDadosProfessor[indice - 1].nomeProfessor = nomeProfessor;
-   listaDadosProfessor[indice - 1].matriculaProfessor = matriculaProfessor;
-
-   // Atualiza o localStorage com a lista atualizada
-   const strLista = JSON.stringify(listaDadosProfessor);
-   localStorage.listaDadosProfessor = strLista;
+    const linha = evt.target.parentElement.parentElement; // Acesse a linha corretamente
+    
+    // cria inputs 
+    const nomeInput = document.createElement('input');
+    nomeInput.type = 'text';
+    nomeInput.placeholder = 'Digite o nome do professor';
+    
+    const matriculaInput = document.createElement('input');
+    matriculaInput.type = 'text';
+    matriculaInput.placeholder = 'Digite a matrícula do professor';
+    
+    // BOTAO DE CONFIRMAÇAO
+    const confirmarBtn = document.createElement('button');
+    confirmarBtn.innerHTML = 'Confirmar';
+    confirmarBtn.onclick = () => {
+        const nomeProfessor = nomeInput.value;
+        const matriculaProfessor = matriculaInput.value;
+        
+        if (nomeProfessor && matriculaProfessor) {
+            linha.querySelector('td:nth-child(2)').textContent = nomeProfessor;
+            linha.querySelector('td:nth-child(3)').textContent = matriculaProfessor;
+    
+            const indice = linha.querySelector('td:nth-child(1)').textContent;
+    
+            listaDadosProfessor[indice - 1].nomeProfessor = nomeProfessor;
+            listaDadosProfessor[indice - 1].matriculaProfessor = matriculaProfessor;
+    
+            const strLista = JSON.stringify(listaDadosProfessor);
+            localStorage.setItem('listaDadosProfessor', strLista);
+    
+            nomeInput.remove();
+            matriculaInput.remove();
+            confirmarBtn.remove();
+        }
+    };
+    
+    // COLOCAR NO FINAL DA CELULA
+    linha.querySelector('td:nth-child(2)').innerHTML = '';
+    linha.querySelector('td:nth-child(2)').appendChild(nomeInput);
+    
+    linha.querySelector('td:nth-child(3)').innerHTML = '';
+    linha.querySelector('td:nth-child(3)').appendChild(matriculaInput);
+    
+    // BOTAO DE CONFIRMAÇÃO
+    if (!linha.querySelector('.confirmar-btn')) {
+        linha.appendChild(confirmarBtn);
+    }
 };
 
-// Função para criar uma nova linha na tabela
+// CRIAR NOVA LINHA NA TABELA
 const createNewLine = (nomeProfessor, matriculaProfessor) => {
     const nline = document.createElement('tr');
     const ncell1 = document.createElement('td');
@@ -74,7 +101,7 @@ const createNewLine = (nomeProfessor, matriculaProfessor) => {
     return nline;
 };
 
-// Função para incluir um novo item
+// FUNÇÃO PARA INCLUIR NOVO ITEM
 function aoIncluir(evt) {
     const objNomeProfessor = document.querySelector('#elementoNomeProfessor');
     const objMatriculaProfessor = document.querySelector('#elementoMatriculaProfessor');
@@ -85,30 +112,28 @@ function aoIncluir(evt) {
         matriculaProfessor: objMatriculaProfessor.value,
     };
 
-    // Adiciona o novo item à listaDadosProfessor
+    // ADICIONA DADOS NA LISTA DADOS PROFESSOR OU EMPURRA CONFORME LIDO NO PUSH
     listaDadosProfessor.push(objDadosProfessor);
 
-    // Atualiza o localStorage com a lista atualizada
+    // ATUALIZA LOCALSTORAGE MEDIANTE QUE NOVOS ITENS SÃO EMPURRADOS
     const strLista = JSON.stringify(listaDadosProfessor);
     localStorage.setItem('listaDadosProfessor', strLista);
     objTableBody.appendChild(createNewLine(objNomeProfessor.value, objMatriculaProfessor.value));
 }
 
-// Função de inicialização
+// FUNÇÃO DE INCIALIZAÇÃO
 const init = () => {
-    // Exibe uma mensagem de carregamento no console
+    
     console.log('A página foi carregada com sucesso!');
 
-    // Seleciona o botão de inserção e associa a função aoIncluir ao evento de clique
     const btnInsert = document.querySelector('#botaoCriarProfessor');
     btnInsert.onclick = aoIncluir;
 
-    // Pega cada elemento da lista e inclui no HTML
     listaDadosProfessor.forEach(item => {
         const objTableBody = document.querySelector('.tabela tbody');
         objTableBody.appendChild(createNewLine(item.nomeProfessor, item.matriculaProfessor));
     });
 };
 
-// Chama a função de inicialização quando a página carregar
+// INICIALIZAÇÃO QUANDO A PÁGINA INICIAR
 window.onload = init;
