@@ -16,16 +16,16 @@ const removeLine = (evt) => {
     const indice = idx - 1;
     listaDadosProfessor.splice(indice, 1);
 
-    // Atualiza o localStorage com a lista atualizada
+    // atualiza o localStorage 
     const strLista = JSON.stringify(listaDadosProfessor);
     localStorage.setItem('listaDadosProfessor', strLista);
 };
 
-// Função para alterar uma linha
+// FUNÇÃO PARA ALTERAR LINHA
 const alterarLine = (evt) => {
     const linha = evt.target.parentElement.parentElement; // Acesse a linha corretamente
     
-    // cria inputs 
+    // CRIA INPUTS
     const nomeInput = document.createElement('input');
     nomeInput.type = 'text';
     nomeInput.placeholder = 'Digite o nome do professor';
