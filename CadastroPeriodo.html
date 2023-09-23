@@ -4,146 +4,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela inicio</title>
+    <script src="js/elementos/custom-header.js" ></script>
+    
+    <title>Cadastro Periodo</title>
 </head>
-<header>
-    <nav class="navbar">
-        <div class="logotipo">
-            <a href="index.html" class="logo"><img src="https://unisales.br/wp-content/uploads/2020/03/logo.svg" alt="unisaleslogo"></a>
-        </div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="index.html">Home</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Curso</a></li>
-            <li class="nav-item"><a href="CadastroPeriodo.html">Cadastro de Periodo</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Desafio</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Salas</a></li>
-            <li class="nav-item"><a href="CadastroProfessores.html">Cadastro de Professores</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Horários</a></li>
-        </ul>
-
-        <div class="ghost">
-            <span garpaszinho></span>
-            <span garpaszinho></span>
-            <span garpaszinho></span>
-        </div>
-    </nav>
-</header>
 
 <body>
 
+    <custom-header></custom-header>
+
     <h1>Cadastro Periodo</h1>
 
-    <div class="box3">
-            <div class="container">
-                <div class="form">
-                    <div id="Período" class="combo">
-                        <label for="Período">Periodo Cursando</label>
-                        <input class="imput"  type="text" placeholder="Ex. Oitavo" name="Período" style="margin-left: 27px;">
-                    </div>
-                    
-                    <div id="qtdAluno" class="combo">
-                        <label for="qtdAluno">Quantidade de Alunos</label>
-                        <input class="imput" type="number" placeholder="Ex. 32" name="qtdAluno">
+    <div class="container">
+        <div class="box3">
+            <div class="form">
+                <div id="Período" class="combo">
+                    <label for="Período">Período Cursando</label>
+                    <input class="imput" type="text" placeholder="Ex. Oitavo" name="Período" style="margin-left: 27px;">
+                </div>
+
+                <div id="qtdAluno" class="combo">
+                    <label for="qtdAluno">Quantidade de Alunos</label>
+                    <input class="imput" type="number" placeholder="Ex. 32" name="qtdAluno">
+                </div>
+
+                <div id="Curso" class="combo">
+                    <label for="Curso">Cursando</label>
+                    <input class="imput" type="text" placeholder="TADS" name="Cursando" style="margin-left: 81px;">
+                </div>
+
+                <div class="navbar">
+                    <button class="btn btnInsert">Incluir</button>
+
+                    <div id="divConfirmarAlteracao" >
+                        <button id="botaoConfirmarAlteracao" class="btn btnUpdate">Incluir Alteração</button>
                     </div>
 
-                    <div id="Curso" class="combo">
-                        <label for="Curso">Cursando</label>
-                        <input class="imput" type="text" placeholder="TADS" name="Cursando" style="margin-left: 81px;">
-                    </div>
-                    
-                    <div class="navbar">
-                        <button  class="btn btnInsert">Incluir</button>           
-                    </div>
                 </div>
-        
-        
+            </div>
+
+            <div class="box4tabela">
                 <table class="tabela">
                     <thead>
                         <tr>
                             <th class="celula">Id</th>
-                            <th class="celula">Período </th>
+                            <th class="celula">Período</th>
                             <th class="celula">Quantidade de alunos</th>
                             <th class="celula">Curso</th>
+                            <th class="celula">Alterar</th>
+                            <th class="celula">Deletar</th>
                         </tr>
                     </thead>
                     <tbody>
-        
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <style>
-
-        body {
-            background-image: url(https://inspetoriasao142819.rm.cloudtotvs.com.br/FrameHTML/web/app/edu/PortalEducacional/login/assets/img/bg.jpg);
-        }
-        .logotipo {
-            width: 1px;
-        }
-
-        h1 {
-            padding-top: 2vw;
-            align-items: center;
-            display: flex;
-            justify-content: center;
-            padding-bottom: 5vw;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        li {
-            list-style-type: none;
-        }
-
-        header {
-            background-color: #fff;
-        }
-
-        a {
-            font-size: 16px;
-            color: #0e4194;
-            text-decoration: none;
-        }
-
-        .navbar {
-            min-height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 34px;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-
-        .box3 { 
-            border: solid 2px;
-            border-radius: 15px;
-
-            height: 70vw;
-            width: 70vw;
-            background: #fff;
-            margin: 0 auto;
-            padding: 20px 20px 20px 20px;
-        }
-        .celula{
-            padding-right: 40px;
-        }
-    </style>
 
     <script src="js/CadastroPeriodo.js"></script>
 </body>

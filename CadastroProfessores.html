@@ -4,34 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/elementos/custom-header.js" ></script>
     <title>Cadastro de Professor</title>
 </head>
-
-<header>
-    <nav class="navbar">
-        <div class="logotipo">
-            <a href="index.html" class="logo"><img src="https://unisales.br/wp-content/uploads/2020/03/logo.svg"
-                    alt="unisaleslogo"></a>
-        </div>
-        <ul class="nav-menu">
-            <li class="nav-item"><a href="index.html">Home</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Curso</a></li>
-            <li class="nav-item"><a href="CadastroPeriodo.html">Cadastro de Período</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Desafio</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Salas</a></li>
-            <li class="nav-item"><a href="CadastroProfessores.html">Cadastro de Professores</a></li>
-            <li class="nav-item"><a href="home">Cadastro de Horários</a></li>
-        </ul>
-
-        <div class="ghost">
-            <span garpaszinho></span>
-            <span garpaszinho></span>
-            <span garpaszinho></span>
-        </div>
-    </nav>
-</header>
-
 <body>
+    <custom-header></custom-header>
     <div class="container">
         <div class="box3"> 
         <div class="form">
@@ -53,8 +30,8 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>Nome do Professor</th>
-                    <th>/ Número da Matricula</th>
+                    <th class="coluna">Nome do Professor</th>
+                    <th>Número da Matricula</th>
                     <th></th>
                 </tr>
             </thead>
@@ -70,103 +47,6 @@
         </ul>
     </div>
 
-</body>
-
-</html>
-<style>
-    body {
-        background-image: url(https://inspetoriasao142819.rm.cloudtotvs.com.br/FrameHTML/web/app/edu/PortalEducacional/login/assets/img/bg.jpg);
-        background-color: rgb(209, 209, 209);
-    }
-
-    .logotipo {
-        width: 1px;
-    }
-
-    h1 {
-        padding-top: 2vw;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        padding-bottom: 5vw;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    li {
-        list-style-type: none;
-    }
-
-    header {
-        background-color: #fff;
-    }
-
-    a {
-        font-size: 16px;
-        color: #0e4194;
-        text-decoration: none;
-    }
-
-    .navbar {
-        min-height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 34px;
-    }
-
-    .logo {
-        font-size: 2rem;
-        font-weight: bold;
-    }
-
-    .nav-menu {
-        display: flex;
-        align-items: center;
-        gap: 60px;
-    }
-
-    .box3 {
-        border: solid 2px;
-        border-radius: 15px;
-
-        height: 30vw;
-        width: 70vw;
-        background: #fff;
-        margin: 0 auto;
-        padding: 20px 20px 20px 20px;
-    }
-
-    .botao {
-        padding-top: 10px;
-    }
-
-    .container {
-        padding-top: 8vw;
-        display: flex;
-        justify-content: center;
-    }
-
-    .box3 {
-        border: solid 2px;
-        border-radius: 15px;
-
-        height: 30vw;
-        width: 70vw;
-        background: #fff;
-        margin: 0 auto;
-        padding: 20px 20px 20px 20px;
-    }
-
-    .input {
-        margin-left: 23px;
-    }
-
-</style>
 <script src="js/CadastroProfessor.js"></script>
 </body>
 
