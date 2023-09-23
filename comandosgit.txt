@@ -1,0 +1,85 @@
+
+Inicializar um Repositório Git:
+
+git init
+
+Clonar um Repositório Existente:
+
+git clone <URL do Repositório Remoto>
+
+Adicionar Arquivos para Staging:
+
+git add <nome do arquivo ou diretório>
+
+Fazer um Commit:
+
+git commit -m "Mensagem do Commit"
+
+Verificar o Status do Repositório:
+
+git status
+
+Visualizar Histórico de Commits:
+
+git log
+
+Visualizar Histórico de Commits em grfico:
+
+git log --oneline --decorate --all --graph 
+
+Criar um Branch (Ramificação):
+
+git branch <nome do branch>
+
+Mudar de Branch:
+
+git checkout <nome do branch>
+
+Criar e Mudar para um Novo Branch:
+
+git checkout -b <nome do novo branch>
+
+Mesclar Alterações de um Branch para Outro:
+
+git merge <nome do branch>
+
+Remover Arquivos do Staging (Desfazer git add):
+
+git reset <nome do arquivo>
+
+Desfazer as Alterações em um Arquivo (Reverter para o último commit):
+
+git checkout -- <nome do arquivo>
+
+Enviar Commits para um Repositório Remoto:
+
+git push origin <nome do branch>
+
+Atualizar o Repositório Local com Alterações do Repositório Remoto:
+
+git pull
+
+Visualizar Diferenças entre Arquivos no Staging e o Último Commit:
+
+git diff --staged
+
+Criar um Tag (Rótulo) para um Commit Específico:
+
+git tag -a <nome do tag> -m "Descrição do Tag" <hash do commit>
+
+Listar Todas as Tags:
+
+git tag
+
+Desfazer o Último Commit (Tenha cuidado ao usar este comando):
+
+git reset HEAD~1
+
+Desfazer Commits Anteriores (Histórico):
+
+git reset --hard <hash do commit>
+
+Listar Branches Locais e Remotos:
+
+git branch -a
+ 
