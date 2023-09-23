@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 let listaDadosSala = JSON.parse(localStorage.getItem('listaDadosSala'))
 let contador = JSON.parse(localStorage.getItem('contadorDadosSala'))
 
@@ -10,6 +11,11 @@ if (!listaDadosSala){
 }
 
 document.querySelector('#idSala').value = contador
+=======
+const listaDadosSala = localStorage.getItem(listaDadosSala)
+
+
+>>>>>>> a064b02017a4738608689183dd380a1fd22c4654
 
 function aoclicar(){
     const numeroSala = document.querySelector('#numeroSala').value
@@ -22,12 +28,18 @@ function aoclicar(){
     const sala = createObject(contador, numeroSala, andarSala)
 
     listaDadosSala.push(sala)
+<<<<<<< HEAD
     contador++
 
     localStorage.listaDadosSala = JSON.stringify(listaDadosSala)  
     localStorage.contadorDadosSala = JSON.stringify(contador)  
 
     document.querySelector('#idSala').value = contador
+=======
+    localStorage.listaDadosSala = listaDadosSala   
+
+    contador++
+>>>>>>> a064b02017a4738608689183dd380a1fd22c4654
 }
 
 function createObject(id, numero, andar){
@@ -40,18 +52,26 @@ function createObject(id, numero, andar){
     return sala
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a064b02017a4738608689183dd380a1fd22c4654
 function createNewLine(id, numero, andar){
     const linha = document.createElement('tr')
     const celulaId = document.createElement('td')
     const celulaNumero = document.createElement('td')
     const celulaAndar = document.createElement('td')
+<<<<<<< HEAD
     const celulaBotaoEdit = document.createElement('td')
     const celulaBotaoRm = document.createElement('td')
+=======
+>>>>>>> a064b02017a4738608689183dd380a1fd22c4654
 
     celulaId.innerText = id
     celulaNumero.innerText = numero
     celulaAndar.innerText = andar
 
+<<<<<<< HEAD
     const BotaoEdit = document.createElement('button')
     BotaoEdit.innerText = "Editar"
     BotaoEdit.onclick = editaLinha
@@ -61,10 +81,13 @@ function createNewLine(id, numero, andar){
     BotaoRm.innerText = "Remover"
     BotaoRm.onclick = removeLinha
     celulaBotaoRm.appendChild(BotaoRm)
+=======
+>>>>>>> a064b02017a4738608689183dd380a1fd22c4654
 
     linha.appendChild(celulaId)
     linha.appendChild(celulaNumero)
     linha.appendChild(celulaAndar)
+<<<<<<< HEAD
     linha.appendChild(celulaBotaoEdit)
     linha.appendChild(celulaBotaoRm)
 
@@ -122,6 +145,11 @@ function removeLinha(tgt){
 
         
     });
+=======
+
+    return linha
+    
+>>>>>>> a064b02017a4738608689183dd380a1fd22c4654
 
 }
 
@@ -132,7 +160,10 @@ function armazenar(sala){
 function init(){
     //atribui função ao botao
     document.querySelector('#botaoCriarSala').onclick = aoclicar
+<<<<<<< HEAD
     document.querySelector('#botaoEditarSala').onclick = salvarAlteracao
+=======
+>>>>>>> a064b02017a4738608689183dd380a1fd22c4654
 
     //carrega os dados salvos/cria novos
 
@@ -141,6 +172,7 @@ function init(){
         listaDadosSala = []
     }
 
+<<<<<<< HEAD
 }
 
 function atualizaTabela(){
@@ -150,6 +182,9 @@ function atualizaTabela(){
         const linha = createNewLine(element.id, element.numero, element.andar)
         document.querySelector('#space').appendChild(linha) 
     });
+=======
+    let contador = 1
+>>>>>>> a064b02017a4738608689183dd380a1fd22c4654
 }
 
 init()
