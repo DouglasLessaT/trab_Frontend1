@@ -1,16 +1,15 @@
 
 let listaDadosSala = JSON.parse(localStorage.getItem('listaDadosSala'))
+let contador = JSON.parse(localStorage.getItem('contadorDadosSala'))
+
 if (!listaDadosSala){
     listaDadosSala = []
+    contador = 1
 }else{
-    listaDadosSala.forEach(element => {
-        const linha = createNewLine(element.id, element.numero, element.andar)
-        document.querySelector('#space').appendChild(linha) 
-
-        
-    });
+    atualizaTabela()
 }
-let contador = 1
+
+document.querySelector('#idSala').value = contador
 
 function aoclicar(){
     const numeroSala = document.querySelector('#numeroSala').value
@@ -23,9 +22,12 @@ function aoclicar(){
     const sala = createObject(contador, numeroSala, andarSala)
 
     listaDadosSala.push(sala)
-    localStorage.listaDadosSala = JSON.stringify(listaDadosSala)    
-
     contador++
+
+    localStorage.listaDadosSala = JSON.stringify(listaDadosSala)  
+    localStorage.contadorDadosSala = JSON.stringify(contador)  
+
+    document.querySelector('#idSala').value = contador
 }
 
 function createObject(id, numero, andar){
@@ -71,8 +73,6 @@ function createNewLine(id, numero, andar){
 
 function editaLinha(tgt){
     const linha = tgt.target.parentElement.parentElement
-    /*console.log(linha.children[1]);
-    console.log(typeof(linha.children[1]));*/
     
     document.querySelector('#idSala').value = linha.children[0].innerText
     document.querySelector('#numeroSala').value = linha.children[1].innerText
@@ -84,15 +84,25 @@ function editaLinha(tgt){
 }
 
 function salvarAlteracao(){
+        const id = document.querySelector('#idSala').value
+        const numero = document.querySelector('#numeroSala').value
+        const andar = document.querySelector('#andarSala').value
 
     listaDadosSala.forEach(element => {
+        if (element.id == id){
+            element.numero = numero
+            element.andar = andar
+        }
+        localStorage.listaDadosSala = JSON.stringify(listaDadosSala)
+
         
-        
+
     });
-
-
     document.querySelector('#botaoCriarSala').style.display = 'block'
     document.querySelector('#botaoEditarSala').style.display = 'none'
+
+    document.querySelector('#idSala').value = contador
+    atualizaTabela()
 
     
 
@@ -131,6 +141,15 @@ function init(){
         listaDadosSala = []
     }
 
+}
+
+function atualizaTabela(){
+    
+    document.querySelector('#space').innerHTML=''
+    listaDadosSala.forEach(element => {
+        const linha = createNewLine(element.id, element.numero, element.andar)
+        document.querySelector('#space').appendChild(linha) 
+    });
 }
 
 init()
