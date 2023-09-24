@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CadastroHorarios</title>
+</head>
+<body>
+    
+    <custom-header></custom-header>
+
+    <h1>Cadastro Horarios</h1>
+
+    <div class="container">
+        <div class="box3">
+            <div class="form">
+                <div>
+                    <select name="Curso" class="select" id="selectCurso" >
+                        <option value="Curso">Curso</option>
+                        <option value="TADS">TADS</option>
+                        <option value="SI">SI</option>
+                    </select>
+
+                    <select name="Periodo" class="select" id="selectPeriodo">
+                        <option value="Periodo">Periodo</option>
+                        <option value="PRIMEIRO">PRIMEIRO</option>
+                        <option value="SEGUNDO">SEGUNDO</option>
+                    </select>
+
+                    <select name="Desafio" class="select" id="selectDesafio">
+                        <option value="Desafio">Desafio</option>
+                        <option value="FRONTEND">FRONTEND</option>
+                        <option value="BACKEND">BACKEND</option>
+                    </select>
+
+                    <select name="Sala" class="select" id="selectSala">
+                        <option value="Sala">Sala</option>
+                        <option value="319">319</option>
+                        <option value="LAB3">LAB3</option>
+                    </select>
+                    
+                </div>
+                
+
+                <div id="nomeprofessor" class="combo">
+                    <label for="nomeprofessor">Nome do Professor: </label>
+                    <input id="elementoNomeProfessor" value="" class="input" type="name" name="nomeProfessor">
+                </div>
+
+                <div id="Horario" class="combo">
+                    <label for="Horario">Horario</label>
+                    <input class="imput" type="time" placeholder="Ex. 19:00" name="Horario" style="margin-left: 27px;">
+                </div>
+
+                <div class="navbar">
+                    <button class="btn btnInsert">Incluir</button>
+
+                    <div id="divConfirmarAlteracao" >
+                        <button id="botaoConfirmarAlteracao" class="btn btnUpdate">Incluir Alteração</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="box4tabela">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th class="colunaTabela">Id</th>
+                            <th class="colunaTabela">Horarios</th>
+                            <th class="colunaTabela">Curso</th>
+                            <th class="colunaTabela">Período</th>
+                            <th class="colunaTabela">Desafio</th>
+                            <th class="colunaTabela">Professor</th>
+                            <th class="colunaTabela">Sala</th>
+                            <th class="colunaTabela">Alterar</th>
+                            <th class="colunaTabela">Deletar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="js/elementos/custom-header.js" ></script>
+    <script src="js/CadastroHorario.js"></script>
+</body>
+</html>

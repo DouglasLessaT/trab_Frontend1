@@ -23,7 +23,7 @@ class Header extends HTMLElement{
                 <a href="index.html">Cadastro de Desafio</a>
                 <a href="index.html">Cadastro de Salas</a>
                 <a href="CadastroProfessores.html">Cadastro de Professores</a>
-                <a href="index.html">Cadastro de Horários</a>
+                <a href="CadastroHorario.html">Cadastro de Horários</a>
             </div>
         </ul>
         </div>

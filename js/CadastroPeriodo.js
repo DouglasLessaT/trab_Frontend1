@@ -1,24 +1,29 @@
-// Inicializa o contador
-let contador = 1;
+// Inicializa o contador a partir do valor armazenado no localStorage ou 1
+let contador = parseInt(localStorage.getItem('contador')) || 1;
 
 // Recupera a variável listaPeriodo do localStorage
 let listaPeriodo = JSON.parse(localStorage.getItem('listaPeriodo')) || [];
 
-// Variável para armazenar a linha em edição
-let linhaEmEdicao = null;
+// Constantes para seletores
+const inputPeriodo = document.querySelector('#Período input');
+const inputqtdAluno = document.querySelector('#qtdAluno input');
+const inputCurso = document.querySelector('#Curso input');
+const tableBody = document.querySelector('.tabela tbody');
+const btnInsert = document.querySelector('.navbar button.btnInsert');
+const btnConfirmarAlteracao = document.querySelector('#botaoConfirmarAlteracao');
 
 // Função para remover uma linha
-const removeLine = (evt) => {
-    const btn = evt.target;
-    const linha = btn.parentElement.parentElement;
-    const idx = linha.children[0].innerHTML;
+const removeLine = (linha) => {
+    const id = linha.dataset.id;
 
     // Remove a linha da tabela
     linha.remove();
 
     // Remove o item correspondente da listaPeriodo
-    const indice = idx - 1;
-    listaPeriodo.splice(indice, 1);
+    const index = listaPeriodo.findIndex(item => item.id === id);
+    if (index !== -1) {
+        listaPeriodo.splice(index, 1);
+    }
 
     // Atualiza o localStorage com a lista atualizada
     atualizarLocalStorage();
@@ -29,17 +34,13 @@ const preencherCamposDeEdicao = (linha) => {
     if (!linha) {
         return; // Verificação para evitar erro
     }
-    const Periodo = linha.children[1].innerText;
-    const qtdAluno = linha.children[2].innerText;
-    const curso = linha.children[3].innerText;
 
-    const inputPeriodo = document.querySelector('#Período input');
-    const inputqtdAluno = document.querySelector('#qtdAluno input');
-    const inputCurso = document.querySelector('#Curso input');
+    const id = linha.dataset.id;
+    const [Periodo, qtdAluno, curso] = linha.querySelectorAll('td:nth-child(n+2)');
 
-    inputPeriodo.value = Periodo;
-    inputqtdAluno.value = qtdAluno;
-    inputCurso.value = curso;
+    inputPeriodo.value = Periodo.innerText;
+    inputqtdAluno.value = qtdAluno.innerText;
+    inputCurso.value = curso.innerText;
 
     // Mostrar o botão "Confirmar Alteração" e ocultar o botão "Incluir"
     document.querySelector('.btn.btnInsert').style.display = 'none';
@@ -53,29 +54,36 @@ const preencherCamposDeEdicao = (linha) => {
 const confirmarAlteracao = () => {
     if (linhaEmEdicao) {
         // Obtenha os valores dos campos de edição
-        const inputPeriodo = document.querySelector('#Período input').value;
-        const inputqtdAluno = document.querySelector('#qtdAluno input').value;
-        const inputCurso = document.querySelector('#Curso input').value;
+        const novoPeriodo = inputPeriodo.value;
+        const novaQtdAluno = inputqtdAluno.value;
+        const novoCurso = inputCurso.value;
 
         // Atualize os valores da linha em edição
-        linhaEmEdicao.children[1].innerText = inputPeriodo;
-        linhaEmEdicao.children[2].innerText = inputqtdAluno;
-        linhaEmEdicao.children[3].innerText = inputCurso;
+        const id = linhaEmEdicao.dataset.id;
+        const [_, periodoCell, qtdAlunoCell, cursoCell] = linhaEmEdicao.querySelectorAll('td');
+        periodoCell.innerText = novoPeriodo;
+        qtdAlunoCell.innerText = novaQtdAluno;
+        cursoCell.innerText = novoCurso;
 
         // Atualize a listaPeriodo com os novos valores
-        const indice = linhaEmEdicao.children[0].innerText;
-        listaPeriodo[indice - 1].Periodo = inputPeriodo;
-        listaPeriodo[indice - 1].qtdAluno = inputqtdAluno;
-        listaPeriodo[indice - 1].curso = inputCurso;
+        const index = listaPeriodo.findIndex(item => item.id === id);
+        if (index !== -1) {
+            listaPeriodo[index] = {
+                id,
+                Periodo: novoPeriodo,
+                qtdAluno: novaQtdAluno,
+                curso: novoCurso,
+            };
+        }
 
         // Ocultar o botão "Confirmar Alteração" e mostrar o botão "Incluir" novamente
         document.querySelector('#divConfirmarAlteracao').style.display = 'none';
         document.querySelector('.btn.btnInsert').style.display = 'block';
 
         // Limpar os campos de edição
-        document.querySelector('#Período input').value = '';
-        document.querySelector('#qtdAluno input').value = '';
-        document.querySelector('#Curso input').value = '';
+        inputPeriodo.value = '';
+        inputqtdAluno.value = '';
+        inputCurso.value = '';
 
         // Limpar a referência da linha em edição
         linhaEmEdicao = null;
@@ -86,69 +94,71 @@ const confirmarAlteracao = () => {
 };
 
 // Função para criar uma nova linha na tabela
-const createNewLine = (Periodo, qtdAluno, curso) => {
+const createNewLine = (id, Periodo, qtdAluno, curso) => {
     const nline = document.createElement('tr');
-    const ncell1 = document.createElement('td');
-    ncell1.innerText = contador;
-    nline.appendChild(ncell1);
-    const ncell2 = document.createElement('td');
-    ncell2.innerText = Periodo;
-    nline.appendChild(ncell2);
-    const ncell3 = document.createElement('td');
-    ncell3.innerText = qtdAluno;
-    nline.appendChild(ncell3);
-    const ncell4 = document.createElement('td');
-    ncell4.innerText = curso;
-    nline.appendChild(ncell4);
-    const ncell5 = document.createElement('td');
-    const btnAlterar = document.createElement('button');
-    btnAlterar.innerHTML = 'Alterar';
-    btnAlterar.onclick = () => {
-        preencherCamposDeEdicao(nline); // Passa a linha como argumento
-    };
-    ncell5.appendChild(btnAlterar);
-    nline.appendChild(ncell5);
-    const ncell6 = document.createElement('td');
-    const btnRemove = document.createElement('button');
-    btnRemove.innerHTML = 'Remover';
-    btnRemove.onclick = removeLine;
-    ncell6.appendChild(btnRemove);
-    nline.appendChild(ncell6);
+    nline.dataset.id = id; // Define o ID da linha
+    nline.innerHTML = `
+        <td>${id}</td>
+        <td>${Periodo}</td>
+        <td>${qtdAluno}</td>
+        <td>${curso}</td>
+        <td><button class="btnAlterar">Alterar</button></td>
+        <td><button class="btnRemover">Remover</button></td>
+    `;
 
-    contador++;
+    const btnAlterar = nline.querySelector('.btnAlterar');
+    const btnRemover = nline.querySelector('.btnRemover');
+
+    btnAlterar.addEventListener('click', () => {
+        preencherCamposDeEdicao(nline);
+    });
+
+    btnRemover.addEventListener('click', () => {
+        removeLine(nline);
+    });
+
     return nline;
 };
 
 // Função para incluir um novo item
-const aoIncluir = (evt) => {
-    const objPeriodo = document.querySelector('#Período input');
-    const objqtdAluno = document.querySelector('#qtdAluno input');
-    const objCurso = document.querySelector('#Curso input');
-    const objTableBody = document.querySelector('.tabela tbody');
+const aoIncluir = () => {
+    const novoPeriodo = inputPeriodo.value;
+    const novaQtdAluno = inputqtdAluno.value;
+    const novoCurso = inputCurso.value;
 
-    const objTurma = {
-        Periodo: objPeriodo.value,
-        qtdAluno: objqtdAluno.value,
-        curso: objCurso.value
-    };
+    if (novoPeriodo && novaQtdAluno && novoCurso) {
+        const id = contador.toString(); // Transforma o contador em ID
+        const objTurma = {
+            id,
+            Periodo: novoPeriodo,
+            qtdAluno: novaQtdAluno,
+            curso: novoCurso,
+        };
+        
+        // Adiciona o novo item à listaPeriodo
+        listaPeriodo.push(objTurma);
 
-    // Adiciona o novo item à listaPeriodo
-    listaPeriodo.push(objTurma);
+        // Atualiza o localStorage com a lista atualizada
+        atualizarLocalStorage();
 
-    // Atualiza o localStorage com a lista atualizada
-    atualizarLocalStorage();
-    objTableBody.appendChild(createNewLine(objTurma.Periodo, objTurma.qtdAluno, objTurma.curso));
+        // Cria uma nova linha na tabela
+        tableBody.appendChild(createNewLine(id, novoPeriodo, novaQtdAluno, novoCurso));
 
-    // Limpa os campos após a inclusão
-    objPeriodo.value = '';
-    objqtdAluno.value = '';
-    objCurso.value = '';
+        // Incrementa o contador para o próximo ID
+        contador++;
+
+        // Limpa os campos após a inclusão
+        // inputPeriodo.value = '';
+        // inputqtdAluno.value = '';
+        // inputCurso.value = '';
+    }
 };
 
 // Função para atualizar o localStorage com a lista atualizada
 function atualizarLocalStorage() {
     const strLista = JSON.stringify(listaPeriodo);
     localStorage.setItem('listaPeriodo', strLista);
+    localStorage.setItem('contador', contador.toString());
 }
 
 // Função de inicialização
@@ -156,18 +166,15 @@ const init = () => {
     // Exibe uma mensagem de carregamento no console
     console.log('A página foi carregada com sucesso!');
 
-    // Seleciona o botão de inserção e associa a função aoIncluir ao evento de clique
-    const btnInsert = document.querySelector('.navbar button.btnInsert');
-    btnInsert.onclick = aoIncluir;
+    // Adiciona um ouvinte de eventos ao botão de inserção
+    btnInsert.addEventListener('click', aoIncluir);
 
-    // Seleciona o botão "Confirmar Alteração" e associa a função confirmarAlteracao ao evento de clique
-    const btnConfirmarAlteracao = document.querySelector('#botaoConfirmarAlteracao');
-    btnConfirmarAlteracao.onclick = confirmarAlteracao;
+    // Adiciona um ouvinte de eventos ao botão "Confirmar Alteração"
+    btnConfirmarAlteracao.addEventListener('click', confirmarAlteracao);
 
-    // Pega cada elemento da lista e inclui no HTML
-    listaPeriodo.forEach(item => {
-        const objTableBody = document.querySelector('.tabela tbody');
-        objTableBody.appendChild(createNewLine(item.Periodo, item.qtdAluno, item.curso));
+    // Popula a tabela com os itens do localStorage
+    listaPeriodo.forEach((item) => {
+        tableBody.appendChild(createNewLine(item.id, item.Periodo, item.qtdAluno, item.curso));
     });
 };
 
