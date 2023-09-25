@@ -10,7 +10,8 @@ const inputqtdAluno = document.querySelector('#qtdAluno input');
 const inputCurso = document.querySelector('#Curso input');
 const tableBody = document.querySelector('.tabela tbody');
 const btnInsert = document.querySelector('.navbar button.btnInsert');
-const btnConfirmarAlteracao = document.querySelector('#botaoConfirmarAlteracao');
+const btnInsertPeriodo = document.querySelector('#btnInsertPeriodo');
+const btnUpdatePeriodo = document.querySelector('#btnUpdatePeriodo');
 
 // Função para remover uma linha
 const removeLine = (linha) => {
@@ -43,8 +44,8 @@ const preencherCamposDeEdicao = (linha) => {
     inputCurso.value = curso.innerText;
 
     // Mostrar o botão "Confirmar Alteração" e ocultar o botão "Incluir"
-    document.querySelector('.btn.btnInsert').style.display = 'none';
-    document.querySelector('#divConfirmarAlteracao').style.display = 'block';
+    btnInsertPeriodo.style.display = 'none';
+    btnUpdatePeriodo.style.display = 'block';
 
     // Armazenar a referência da linha em edição
     linhaEmEdicao = linha;
@@ -77,8 +78,8 @@ const confirmarAlteracao = () => {
         }
 
         // Ocultar o botão "Confirmar Alteração" e mostrar o botão "Incluir" novamente
-        document.querySelector('#divConfirmarAlteracao').style.display = 'none';
-        document.querySelector('.btn.btnInsert').style.display = 'block';
+        btnInsertPeriodo.style.display = 'block';
+        btnUpdatePeriodo.style.display = 'none';
 
         // Limpar os campos de edição
         inputPeriodo.value = '';
@@ -148,9 +149,9 @@ const aoIncluir = () => {
         contador++;
 
         // Limpa os campos após a inclusão
-        // inputPeriodo.value = '';
-        // inputqtdAluno.value = '';
-        // inputCurso.value = '';
+        inputPeriodo.value = '';
+        inputqtdAluno.value = '';
+        inputCurso.value = '';
     }
 };
 
@@ -167,10 +168,10 @@ const init = () => {
     console.log('A página foi carregada com sucesso!');
 
     // Adiciona um ouvinte de eventos ao botão de inserção
-    btnInsert.addEventListener('click', aoIncluir);
+    btnInsertPeriodo.addEventListener('click', aoIncluir);
 
     // Adiciona um ouvinte de eventos ao botão "Confirmar Alteração"
-    btnConfirmarAlteracao.addEventListener('click', confirmarAlteracao);
+    btnUpdatePeriodo.addEventListener('click', confirmarAlteracao);
 
     // Popula a tabela com os itens do localStorage
     listaPeriodo.forEach((item) => {
@@ -180,3 +181,4 @@ const init = () => {
 
 // Chama a função de inicialização quando a página carregar
 window.onload = init;
+

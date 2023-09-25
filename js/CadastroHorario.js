@@ -6,9 +6,10 @@ const selectCurso = document.querySelector('#selectCurso');
 const selectPeriodo = document.querySelector('#selectPeriodo');
 const selectDesafio = document.querySelector('#selectDesafio');
 const selectSala = document.querySelector('#selectSala');
-const btnInsert = document.querySelector('.navbar button.btnInsert');
-const btnConfirmarAlteracao = document.querySelector('#botaoConfirmarAlteracao');
+const btnInsert = document.querySelector('.navbar button.btnInsertHorarios'); 
+const btnUpdate = document.querySelector('#btnUpdateHorarios'); 
 const tableBody = document.querySelector('.tabela tbody');
+
 
 // Função para remover uma linha
 const removeLine = (linha) => {
@@ -90,7 +91,7 @@ const alterar = () => {
 };
 
 // Adicione um ouvinte de eventos ao botão "Incluir Alteração"
-btnConfirmarAlteracao.addEventListener('click', alterar);
+btnUpdate.addEventListener('click', alterar);
 
 // Função para criar uma nova linha na tabela
 const createNewLine = (horario) => {

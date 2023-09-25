@@ -18,10 +18,10 @@ class Header extends HTMLElement{
             <li class=" dropdown-trigger">
             <div class ="dropdown-title">Cadastro</div>
             <div class="dropdown-content">
-                <a href="index.html">Cadastro de Curso</a>
+                <a href="CadastroCurso.html">Cadastro de Curso</a>
                 <a href="CadastroPeriodo.html">Cadastro de Periodo</a>
-                <a href="index.html">Cadastro de Desafio</a>
-                <a href="index.html">Cadastro de Salas</a>
+                <a href="CadastroDesafio.html">Cadastro de Desafio</a>
+                <a href="CadastroSalas.html">Cadastro de Salas</a>
                 <a href="CadastroProfessores.html">Cadastro de Professores</a>
                 <a href="CadastroHorario.html">Cadastro de Horários</a>
             </div>

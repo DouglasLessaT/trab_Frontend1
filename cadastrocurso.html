@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela inicio</title>
+</head>
+<nav class="navbar">
+    <div class="logotipo">
+        <a href="index.html" class="logo"><img src="https://unisales.br/wp-content/uploads/2020/03/logo.svg" alt="unisaleslogo"></a>
+    </div>
+    <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a target="_blank" href="home">Cadastro de Curso</a></li>
+        <li class="nav-item"><a target="_blank" href="home">Cadastro de Período</a></li>
+        <li class="nav-item"><a target="_blank" href="home">Cadastro de Desafio</a></li>
+        <li class="nav-item"><a target="_blank" href="home">Cadastro de Salas</a></li>
+        <li class="nav-item"><a target="_blank" href="home">Cadastro de Professores</a></li>
+        <li class="nav-item"><a target="_blank" href="home">Cadastro de Horários</a></li>
+    </ul>
+
+    <div class="ghost">
+        <span garpaszinho></span>
+        <span garpaszinho></span>
+        <span garpaszinho></span>
+    </div>
+</nav>
+<body>
+    <h1>Cadastro de Curso</h1>
+    <div class="box1">
+        <div class="form">
+            <div>
+                <label for="nmcurso">Nome do Curso:</label>
+                <input type="text" placeholder="ex: Engenharia de Software" id="nome">
+            </div>
+            <div>
+                <label for="area">Área de Atuação:</label>
+                <input type="text" placeholder="ex: T.I" id="area">
+            </div>
+            <div>
+                <label for="duracao">Quantidade de Períodos:</label>
+                <input type="number" min="3" max="10" placeholder="0" id="duracao">
+            </div>
+            <div>
+                <label for="tipo">Tipo do Curso:</label>
+                <select name="tipocurso" id="tipo">
+                    <option value="opcao1"></option>
+                    <option value="Bacharelado">Bacharelado</option>
+                    <option value="Licenciatura">Licenciatura</option>
+                    <option value="Tecnólogo">Tecnólogo</option>
+                </select>
+            </div>
+            <button class="cadastrar" id="btncadastrar">Cadastrar</button>
+        </div>
+        <div id="listacursos">
+            <h2>Lista de Cursos</h2>
+            <ul id="cursos">
+            </ul>
+        </div>
+
+        
+        <div id="edicaoCurso" style="display: none;">
+            <h2>Editar Curso</h2>
+            <div>
+                <label for="nomeEdicao">Nome do Curso:</label>
+                <input type="text" placeholder="ex: Engenharia de Software" id="nomeEdicao">
+            </div>
+            <div>
+                <label for="areaEdicao">Área de Atuação:</label>
+                <input type="text" placeholder="ex: T.I" id="areaEdicao">
+            </div>
+            <div>
+                <label for="duracaoEdicao">Quantidade de Períodos:</label>
+                <input type="number" min="3" max="10" placeholder="0" id="duracaoEdicao">
+            </div>
+            <div>
+                <label for="tipoEdicao">Tipo do Curso:</label>
+                <select name="tipocurso" id="tipoEdicao">
+                    <option value="opcao1"></option>
+                    <option value="Bacharelado">Bacharelado</option>
+                    <option value="Licenciatura">Licenciatura</option>
+                    <option value="Tecnólogo">Tecnólogo</option>
+                </select>
+            </div>
+            <button class="editar" id="btneditar">Salvar</button>
+            <button class="cancelar" id="btncancelar">Cancelar</button>
+        </div>
+    </div>
+
+<style>
+    body {
+        background-color: rgb(210, 255, 253);
+        background-image: url(https://inspetoriasao142819.rm.cloudtotvs.com.br/FrameHTML/web/app/edu/PortalEducacional/login/assets/img/bg.jpg);
+                }
+    .logotipo {
+        width: 1px;
+    }
+
+    h1 {
+        padding-top: 2vw;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 5vw;
+        color: #fff;
+    }
+
+    h2 { 
+        color: #000000;
+
+    
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    li {
+        list-style-type: none;
+    }
+
+    header {
+        background-color: #fff;
+    }
+
+    a {
+        font-size: 16px;
+        color: #0e4194;
+        text-decoration: none;
+    }
+
+    .navbar {
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 34px;
+        background-color: white;
+    }
+
+    .logo {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .nav-menu {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+    }
+
+
+    .box1 {
+        background: rgb(255, 255, 255);
+        border: solid 2px;
+        border-radius: 15px;
+        height: 30vw;
+        width: 20vw;
+        margin: 0 auto;
+        padding: 20px 20px 20px 20px;
+    } 
+
+    .form{
+        margin-top: 30px;
+    }
+
+#tipo {
+
+margin-right: 10px;
+margin-left: 15px;
+}
+
+#nome {
+
+margin-left: 5px;
+}
+
+.cadastrar {
+margin-top: 30px;
+margin-left: 280px;
+
+
+}
+    </style>
+        <script src="cadastrocurso.js"></script>
+</body>
+</html>
