@@ -7,124 +7,145 @@ const selectPeriodo = document.querySelector('#selectPeriodo');
 const selectDesafio = document.querySelector('#selectDesafio');
 const selectProfessor = document.querySelector('#selectProfessor');
 const selectSala = document.querySelector('#selectSala');
-const btnInsert = document.querySelector('.navbar button.btnInsertHorarios'); 
-const btnUpdate = document.querySelector('#btnUpdateHorarios'); 
+const btnInsert = document.querySelector('.navbar button.btnInsertHorarios');
+const btnUpdate = document.querySelector('#btnUpdateHorarios');
 const tableBody = document.querySelector('.tabela tbody');
 
-function preencherSelectCursos() {
-    const listaCursos = JSON.parse(localStorage.getItem('cursos')) || [];
-    const selectCursos = document.getElementById('seuSelectDeCursos');
+// Defina a variável listaDesafio
+const listaDesafio = [
+  { id: 1, desafio: 'Desafio 1' },
+  { id: 2, desafio: 'Desafio 2' },
+  // Adicione mais desafios conforme necessário
+];
 
-    listaCursos.forEach((curso) => {
-        const option = document.createElement('option');
-        option.value = curso.id; // Defina o valor com base no ID do curso
-        option.textContent = curso.nome; // Defina o texto com base no nome do curso
-        selectCursos.appendChild(option);
-    });
+function preencherSelectCursos() {
+  const listaCursos = JSON.parse(localStorage.getItem('cursos')) || [];
+  const selectCursos = document.getElementById('selectCurso');
+
+  listaCursos.forEach((curso) => {
+    const option = document.createElement('option');
+    option.value = curso.id; // Defina o valor com base no ID do curso
+    option.textContent = curso.nome; // Defina o texto com base no nome do curso
+    selectCursos.appendChild(option);
+  });
 }
 
 // Chame esta função para preencher o select de cursos quando a página carregar
 preencherSelectCursos();
 
 function preencherSelectPeriodos() {
-    const listaPeriodos = JSON.parse(localStorage.getItem('listaPeriodo')) || [];
-    const selectPeriodos = document.getElementById('seuSelectDePeriodos');
+  const listaPeriodos = JSON.parse(localStorage.getItem('listaPeriodo')) || [];
+  const selectPeriodos = document.getElementById('selectPeriodo');
 
-    listaPeriodos.forEach((periodo) => {
-        const option = document.createElement('option');
-        option.value = periodo.id; // Defina o valor com base no ID do período
-        option.textContent = periodo.nome; // Defina o texto com base no nome do período
-        selectPeriodos.appendChild(option);
-    });
+  listaPeriodos.forEach((periodo) => {
+    const option = document.createElement('option');
+    option.value = periodo.id; // Defina o valor com base no ID do período
+    option.textContent = periodo.Periodo; // Defina o texto com base no nome do período
+    selectPeriodos.appendChild(option);
+  });
 }
 
 // Chame esta função para preencher o select de períodos quando a página carregar
 preencherSelectPeriodos();
 
 function preencherSelectSalas() {
-    const listaSalas = JSON.parse(localStorage.getItem('listaDadosSala')) || [];
-    const selectSalas = document.getElementById('seuSelectDeSalas');
+  const listaSalas = JSON.parse(localStorage.getItem('listaDadosSala')) || [];
+  const selectSalas = document.getElementById('selectSala');
 
-    listaSalas.forEach((sala) => {
-        const option = document.createElement('option');
-        option.value = sala.id; // Defina o valor com base no ID da sala
-        option.textContent = `Sala ${sala.numero}, Andar ${sala.andar}`; // Texto personalizado
-        selectSalas.appendChild(option);
-    });
+  listaSalas.forEach((sala) => {
+    const option = document.createElement('option');
+    option.value = sala.id; // Defina o valor com base no ID da sala
+    option.textContent = `Sala ${sala.numero}, Andar ${sala.andar}`; // Texto personalizado
+    selectSalas.appendChild(option);
+  });
 }
 
 // Chame esta função para preencher o select de salas quando a página carregar
 preencherSelectSalas();
 
 function preencherSelectProfessores() {
-    const listaProfessores = JSON.parse(localStorage.getItem('listaDadosProfessor')) || [];
-    const selectProfessores = document.getElementById('seuSelectDeProfessores');
+  const listaProfessores = JSON.parse(localStorage.getItem('listaDadosProfessor')) || [];
+  const selectProfessores = document.getElementById('selectProfessor');
 
-    listaProfessores.forEach((professor) => {
-        const option = document.createElement('option');
-        option.value = professor.id; // Defina o valor com base no ID do professor
-        option.textContent = professor.nome; // Defina o texto com base no nome do professor
-        selectProfessores.appendChild(option);
-    });
+  listaProfessores.forEach((professor) => {
+    const option = document.createElement('option');
+    option.value = professor.id; // Defina o valor com base no ID do professor
+    option.textContent = professor.nomeProfessor; // Defina o texto com base no nome do professor
+    selectProfessores.appendChild(option);
+  });
 }
 
 // Chame esta função para preencher o select de professores quando a página carregar
 preencherSelectProfessores();
 
 function preencherSelectDesafio() {
-    const selectDesafio = document.getElementById("selectDesafio");
+  const selectDesafio = document.getElementById("selectDesafio");
 
-    // Limpe todas as opções atuais do select
-    selectDesafio.innerHTML = "";
+  // Crie uma opção vazia (opcional, para indicar seleção)
+  const optionVazia = document.createElement("option");
+  optionVazia.value = "";
+  selectDesafio.appendChild(optionVazia);
 
-    // Crie uma opção vazia (opcional, para indicar seleção)
-    const optionVazia = document.createElement("option");
-    optionVazia.value = "";
-    selectDesafio.appendChild(optionVazia);
-
-    // Adicione as opções de desafio ao select
-    listaDesafio.forEach((desafio) => {
-        const option = document.createElement("option");
-        option.value = desafio.id; // Valor da opção
-        option.text = desafio.desafio; // Texto visível no select
-        selectDesafio.appendChild(option);
-    });
+  // Adicione as opções de desafio ao select
+  listaDesafio.forEach((listaDesafio) => {
+    const option = document.createElement("option");
+    option.value = listaDesafio.id; // Valor da opção
+    option.textContent = listaDesafio.desafio; // Texto visível no select
+    selectDesafio.appendChild(option);
+  });
 }
 
 preencherSelectDesafio()
+// Função para realizar a alteração de um horário
+const createNewLine = (horario) => {
+    const id = horario.id;
+    const Horario = horario.Horario;
+    const Curso = horario.Curso;
+    const Periodo = horario.Periodo;
+    const Desafio = horario.Desafio;
+    const Professor = horario.Professor;
+    const Sala = horario.Sala;
 
-// Função para remover uma linha
-const removeLine = (linha) => {
-    const id = linha.dataset.id;
+    const nline = document.createElement('tr');
+    nline.dataset.id = id;
+    nline.innerHTML = `
+        <td class="colunaTabela">${id}</td>
+        <td>${Horario}</td>
+        <td>${Curso}</td>
+        <td>${Periodo}</td>
+        <td>${Desafio}</td>
+        <td>${Professor}</td>
+        <td>${Sala}</td>
+        <td><button class="btnAlterar">Alterar</button></td>
+        <td><button class="btnRemover">Remover</button></td>
+    `;
 
-    // Remove o item correspondente da listaHorarios
-    const indice = listaHorarios.findIndex((item) => item.id === id);
-    if (indice !== -1) {
-        listaHorarios.splice(indice, 1);
-    }
+    const btnAlterar = nline.querySelector('.btnAlterar');
+    const btnRemover = nline.querySelector('.btnRemover');
+
+    btnAlterar.addEventListener('click', () => {
+        preencherCamposDeEdicao(horario);
+    });
+
+    btnRemover.addEventListener('click', () => {
+        removeLine(nline, horario.id);
+    });
+
+    return nline;
+};
+
+const removeLine = (linha, horarioId) => {
+    // Remove a linha da tabela
+    linha.remove();
+
+    // Remove o horário da lista
+    listaHorarios = listaHorarios.filter((horario) => horario.id !== horarioId);
 
     // Atualiza o localStorage com a lista atualizada
     atualizarLocalStorage();
-
-    // Remove a linha da tabela
-    linha.remove();
 };
 
-// Função para preencher os campos de edição com os dados do horário selecionado
-const preencherCamposDeEdicao = (horario) => {
-    // Preencha os campos de edição com os dados do horário selecionado
-    inputHorario.value = horario.Horario;
-    selectCurso.value = horario.Curso;
-    selectPeriodo.value = horario.Periodo;
-    selectDesafio.value = horario.Desafio;
-    selectSala.value = horario.Sala;
-    selectProfessor.value = horario.Professor;
-
-    // Mostrar o botão "Confirmar Alteração" e ocultar o botão "Incluir"
-    document.querySelector('.btn.btnInsert').style.display = 'none';
-    document.querySelector('#divConfirmarAlteracao').style.display = 'block';
-    horarioEmEdicao = horario;
-};
+// ...
 
 // Função para realizar a alteração de um horário
 const alterar = () => {
@@ -171,47 +192,6 @@ const alterar = () => {
             horarioEmEdicao = null;
         }
     }
-};
-
-// Adicione um ouvinte de eventos ao botão "Incluir Alteração"
-btnUpdate.addEventListener('click', alterar);
-
-// Função para criar uma nova linha na tabela
-const createNewLine = (horario) => {
-    const id = horario.id;
-    const Horario = horario.Horario;
-    const Curso = horario.Curso;
-    const Periodo = horario.Periodo;
-    const Desafio = horario.Desafio;
-    const Professor = horario.Professor;
-    const Sala = horario.Sala;
-
-    const nline = document.createElement('tr');
-    nline.dataset.id = id;
-    nline.innerHTML = `
-        <td colunaTabela>${id}</td>
-        <td >${Horario}</td>
-        <td >${Curso}</td>
-        <td >${Periodo}</td>
-        <td >${Desafio}</td>
-        <td >${Professor}</td>
-        <td >${Sala}</td>
-        <td ><button class="btnAlterar">Alterar</button></td>
-        <td ><button class="btnRemover">Remover</button></td>
-    `;
-
-    const btnAlterar = nline.querySelector('.btnAlterar');
-    const btnRemover = nline.querySelector('.btnRemover');
-
-    btnAlterar.addEventListener('click', () => {
-        preencherCamposDeEdicao(horario);
-    });
-
-    btnRemover.addEventListener('click', () => {
-        removeLine(nline);
-    });
-
-    return nline;
 };
 
 const aoIncluir = () => {
