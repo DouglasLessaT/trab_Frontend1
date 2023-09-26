@@ -76,7 +76,7 @@ const confirmarAlteracaoDesafio = () => {
         if (index !== -1) {
             listaDesafio[index] = {
                 id,
-                nmDesafio: novoDesafio,
+                nomeDesafio: novoDesafio,
                 duracao: novaDuracao,
                 curso: novoCurso,
                 professor: novoProfessor,

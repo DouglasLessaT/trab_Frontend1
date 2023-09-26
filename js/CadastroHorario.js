@@ -108,12 +108,13 @@ const createNewLineHorario = (id, horario, curso, periodo, desafio, professor, s
   btnRemover.addEventListener('click', () => {
       removeLine(newRow, id);
   });
-
+  
   return newRow;
 };
 
 // Função para adicionar um novo horário
 const adicionarHorario = () => {
+  contador++;
   const novoHorario = inputHorario.value;
   const novoCurso = selectCurso.value;
   const novoPeriodo = selectPeriodo.value;
@@ -145,8 +146,7 @@ const adicionarHorario = () => {
       );
 
       // Incrementa o contador para o próximo ID
-      contador++;
-
+      
       // Limpa os campos após a inclusão
       inputHorario.value = '';
       selectCurso.value = 'Curso';
