@@ -5,11 +5,93 @@ const inputHorario = document.querySelector('#Horario input');
 const selectCurso = document.querySelector('#selectCurso');
 const selectPeriodo = document.querySelector('#selectPeriodo');
 const selectDesafio = document.querySelector('#selectDesafio');
+const selectProfessor = document.querySelector('#selectProfessor');
 const selectSala = document.querySelector('#selectSala');
 const btnInsert = document.querySelector('.navbar button.btnInsertHorarios'); 
 const btnUpdate = document.querySelector('#btnUpdateHorarios'); 
 const tableBody = document.querySelector('.tabela tbody');
 
+function preencherSelectCursos() {
+    const listaCursos = JSON.parse(localStorage.getItem('cursos')) || [];
+    const selectCursos = document.getElementById('seuSelectDeCursos');
+
+    listaCursos.forEach((curso) => {
+        const option = document.createElement('option');
+        option.value = curso.id; // Defina o valor com base no ID do curso
+        option.textContent = curso.nome; // Defina o texto com base no nome do curso
+        selectCursos.appendChild(option);
+    });
+}
+
+// Chame esta função para preencher o select de cursos quando a página carregar
+preencherSelectCursos();
+
+function preencherSelectPeriodos() {
+    const listaPeriodos = JSON.parse(localStorage.getItem('listaPeriodo')) || [];
+    const selectPeriodos = document.getElementById('seuSelectDePeriodos');
+
+    listaPeriodos.forEach((periodo) => {
+        const option = document.createElement('option');
+        option.value = periodo.id; // Defina o valor com base no ID do período
+        option.textContent = periodo.nome; // Defina o texto com base no nome do período
+        selectPeriodos.appendChild(option);
+    });
+}
+
+// Chame esta função para preencher o select de períodos quando a página carregar
+preencherSelectPeriodos();
+
+function preencherSelectSalas() {
+    const listaSalas = JSON.parse(localStorage.getItem('listaDadosSala')) || [];
+    const selectSalas = document.getElementById('seuSelectDeSalas');
+
+    listaSalas.forEach((sala) => {
+        const option = document.createElement('option');
+        option.value = sala.id; // Defina o valor com base no ID da sala
+        option.textContent = `Sala ${sala.numero}, Andar ${sala.andar}`; // Texto personalizado
+        selectSalas.appendChild(option);
+    });
+}
+
+// Chame esta função para preencher o select de salas quando a página carregar
+preencherSelectSalas();
+
+function preencherSelectProfessores() {
+    const listaProfessores = JSON.parse(localStorage.getItem('listaDadosProfessor')) || [];
+    const selectProfessores = document.getElementById('seuSelectDeProfessores');
+
+    listaProfessores.forEach((professor) => {
+        const option = document.createElement('option');
+        option.value = professor.id; // Defina o valor com base no ID do professor
+        option.textContent = professor.nome; // Defina o texto com base no nome do professor
+        selectProfessores.appendChild(option);
+    });
+}
+
+// Chame esta função para preencher o select de professores quando a página carregar
+preencherSelectProfessores();
+
+function preencherSelectDesafio() {
+    const selectDesafio = document.getElementById("selectDesafio");
+
+    // Limpe todas as opções atuais do select
+    selectDesafio.innerHTML = "";
+
+    // Crie uma opção vazia (opcional, para indicar seleção)
+    const optionVazia = document.createElement("option");
+    optionVazia.value = "";
+    selectDesafio.appendChild(optionVazia);
+
+    // Adicione as opções de desafio ao select
+    listaDesafio.forEach((desafio) => {
+        const option = document.createElement("option");
+        option.value = desafio.id; // Valor da opção
+        option.text = desafio.desafio; // Texto visível no select
+        selectDesafio.appendChild(option);
+    });
+}
+
+preencherSelectDesafio()
 
 // Função para remover uma linha
 const removeLine = (linha) => {
@@ -36,7 +118,7 @@ const preencherCamposDeEdicao = (horario) => {
     selectPeriodo.value = horario.Periodo;
     selectDesafio.value = horario.Desafio;
     selectSala.value = horario.Sala;
-    document.querySelector('#elementoNomeProfessor').value = horario.Professor || ''; // Preencha o campo Professor
+    selectProfessor.value = horario.Professor;
 
     // Mostrar o botão "Confirmar Alteração" e ocultar o botão "Incluir"
     document.querySelector('.btn.btnInsert').style.display = 'none';
@@ -53,7 +135,7 @@ const alterar = () => {
         const novoPeriodo = selectPeriodo.value;
         const novaDesafio = selectDesafio.value;
         const novaSala = selectSala.value;
-        const novoProfessor = document.querySelector('#elementoNomeProfessor').value; // Obtenha o valor do campo Professor
+        const novoProfessor = selectProfessor.value; 
 
         // Verifique se os campos não estão vazios
         if (novoHorario && novoCurso && novoPeriodo && novaDesafio && novoProfessor) {
@@ -81,6 +163,7 @@ const alterar = () => {
             selectPeriodo.value = 'Periodo';
             selectDesafio.value = 'Desafio';
             selectSala.value = 'Sala';
+            selectProfessor.value = 'Professor'
 
             document.querySelector('.btn.btnInsert').style.display = 'block';
             document.querySelector('#divConfirmarAlteracao').style.display = 'none';
@@ -100,7 +183,7 @@ const createNewLine = (horario) => {
     const Curso = horario.Curso;
     const Periodo = horario.Periodo;
     const Desafio = horario.Desafio;
-    const Professor = horario.Professor || '';
+    const Professor = horario.Professor;
     const Sala = horario.Sala;
 
     const nline = document.createElement('tr');
@@ -137,8 +220,7 @@ const aoIncluir = () => {
     const novoPeriodo = selectPeriodo.value;
     const novaDesafio = selectDesafio.value;
     const novaSala = selectSala.value;
-    const nomeProfessor = document.querySelector(
-        '#elementoNomeProfessor').value; // Obtenha o valor do campo Professor
+    const nomeProfessor = selectProfessor.value;
 
     if (novoHorario && novoCurso && novoPeriodo &&
          novaDesafio && nomeProfessor) {
@@ -172,6 +254,7 @@ const aoIncluir = () => {
         selectPeriodo.value = 'Periodo';
         selectDesafio.value = 'Desafio';
         selectSala.value = 'Sala';
+        selectProfessor.value = 'Professor'
     }
 };
 
@@ -182,12 +265,21 @@ const atualizarLocalStorage = () => {
     localStorage.setItem('contador', contador.toString());
 };
 
+
+
 // Função de inicialização
 const init = () => {
     // Exibe uma mensagem de carregamento no console
     console.log('A página foi carregada com sucesso!');
 
-    // Adiciona um ouvinte de eventos ao botão de inserção
+    // Chame as funções para preencher os selects
+    preencherSelectCurso();
+    preencherSelectProfessor();
+    preencherSelectPeriodos();
+    preencherSelectDesafio();
+    preencherSelectSala();
+
+    // Adicione um ouvinte de eventos ao botão de inserção
     btnInsert.addEventListener('click', aoIncluir);
 
     // Popula a tabela com os itens do localStorage
@@ -195,6 +287,7 @@ const init = () => {
         tableBody.appendChild(createNewLine(item));
     });
 };
+
 
 // Chama a função de inicialização quando a página carregar
 window.onload = init;
