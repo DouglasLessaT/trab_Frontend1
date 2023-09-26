@@ -11,16 +11,18 @@
         listaCursos.innerHTML = "";
 
         cursos.forEach((curso, index) => {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `
-                Nome: ${curso.nome}<br>
-                Área: ${curso.area}<br>
-                Duração: ${curso.duracao}<br>
-                Tipo: ${curso.tipo}<br>
-                <button onclick="editarCurso(${index})">Editar</button>
-                <button onclick="excluirCurso(${index})">Excluir</button>
-            `;
-            listaCursos.appendChild(listItem);
+            const linha = document.createElement("tbody")
+            linha.innerHTML = `
+
+            <tr>
+                <td>Nome: ${curso.nome}</td>
+                <td>Área: ${curso.area}</td>
+                <td>Duração: ${curso.duracao}</td>
+                <td>Tipo: ${curso.tipo}</td>
+                <td><button onclick="editarCurso(${index})">Editar</button></td>
+                <td><button onclick="excluirCurso(${index})">Excluir</button></td>
+            </tr>`;
+            listaCursos.appendChild(linha);
         });
 
         salvarCursosNoCache(); 

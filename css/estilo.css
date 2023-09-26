@@ -47,6 +47,7 @@ h1 {
     display: flex;
     justify-content: center;
     padding-bottom: 5vw;
+    color: white;
 }
 
 * {
@@ -125,6 +126,14 @@ a {
     display: none;
 }
 
-.tabeladiv{
-    display: flex
+.tabela{
+    align-items: center;
+}
+
+#columnhorario{
+    background-color: red;
+    color: aqua;
+
+
+
 }
