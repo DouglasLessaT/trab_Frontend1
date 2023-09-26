@@ -3,66 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/elementos/custom-header.js"></script>
-    <title>Document</title>
+    <title>Cadastro Sala</title>
 </head>
 <body>
-    <link rel="stylesheet" href="css/estilo.css">
     <custom-header></custom-header>
+
+    <h1>Cadastro Sala</h1>
     <div class="container">
         <div class="box3"> 
             
-        <!--Formulário, editar daqui pra baixo-->
-        <div class="form">
-<<<<<<< HEAD
-            <div id="comboIdSala" class="combo">
-                <label for="idSala">ID</label>
-                <input id="idSala" value="" class="input" type="name" name="idSala" readonly>
-            </div>
-=======
->>>>>>> a064b02017a4738608689183dd380a1fd22c4654
-            <div id="comboNumeroSala" class="combo">
-                <label for="numeroSala">Número da sala:</label>
-                <input id="numeroSala" value="" class="input" type="name" name="numeroSala">
-            </div>
-            <div id="comboAndarSala" class="combo">
-                <label for="andarSala">Andar da sala: </label>
-                <input id="andarSala" value="" type="input" name="andarSala">
+            <div class="form">
+                <div id="comboIdSala" class="combo">
+                    <label for="idSala">ID</label>
+                    <input id="idSala" value="" class="input" type="name" name="idSala" readonly>
+                </div>
+                <div id="comboNumeroSala" class="combo">
+                    <label for="numeroSala">Número da sala:</label>
+                    <input id="numeroSala" value="" class="input" type="name" name="numeroSala">
+                </div>
+                <div id="comboAndarSala" class="combo">
+                    <label for="andarSala">Andar da sala: </label>
+                    <input id="andarSala" value="" type="input" name="andarSala">
+                </div>
+
+                <div class="botao">
+                    <button id="botaoCriarSala" class="btn btnInsert">Incluir</button>
+                    <button id="botaoEditarSala" class="btn btnInsert">Salvar Alteração</button>
+                </div>
             </div>
 
-            <div class="botao">
-                <button id="botaoCriarSala" class="btn btnInsert">Incluir</button>
-<<<<<<< HEAD
-                <button id="botaoEditarSala" class="btn btnInsert" >Salvar Alteração</button>
-=======
->>>>>>> a064b02017a4738608689183dd380a1fd22c4654
+            <!-- Tabela -->
+            <div class="tabeladiv">
+                <table id="tabelaDadosSala" class="tabela">
+                    <thead>
+                        <tr>
+                            <th class="coluna">Id</th>
+                            <th class="coluna">Nº sala</th>
+                            <th class="coluna">Andar</th>
+                            <th class="coluna">Alterar</th>
+                            <th class="coluna">Deletar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="space">
+                        
+                    </tbody>
+                </table>
             </div>
-        </div>
-
-        <!--Tabela-->
-        <table id="tabelaDadosSala" class="tabela">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Número da sala</th>
-                    <th>Andar</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="space">
-
-            </tbody>
-        </table>
         </div>
     </div>
 
-    <!--Sabe Deus oq isso faz-->
+    <!-- Sabe Deus o que isso faz -->
     <div class="sidebar">
         <ul class="lista-professores">
         </ul>
     </div>
 
+    <script src="js/elementos/custom-header.js"></script>
+    <link rel="stylesheet" href="css/estilo.css">
     <script src="js/CadastroSala.js"></script>
-    
 </body>
 </html>

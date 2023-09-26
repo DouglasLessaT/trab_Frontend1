@@ -1,14 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/elementos/custom-header.js"></script>
-    <title>Document</title>
+    <title>Tela inicio</title>
 </head>
+
 <body>
-    <link rel="stylesheet" href="css/estilo.css">
+
     <custom-header></custom-header>
-    
+    <h1>Cadastro de Curso</h1>
+    <div class="container">
+        <div class="box3">
+            <div class="form">
+                <div>
+                    <label for="nmcurso">Nome do Curso:</label>
+                    <input type="text" placeholder="ex: Engenharia de Software" id="nome">
+                </div>
+                <div>
+                    <label for="area">Área de Atuação:</label>
+                    <input type="text" placeholder="ex: T.I" id="area">
+                </div>
+                <div>
+                    <label for="duracao">Quantidade de Períodos:</label>
+                    <input type="number" min="3" max="10" placeholder="0" id="duracao">
+                </div>
+                <div>
+                    <label for="tipo">Tipo do Curso:</label>
+                    <select name="tipocurso" id="tipo">
+                        <option value="opcao1"></option>
+                        <option value="Bacharelado">Bacharelado</option>
+                        <option value="Licenciatura">Licenciatura</option>
+                        <option value="Tecnólogo">Tecnólogo</option>
+                    </select>
+                </div>
+                <button class="cadastrar" id="btncadastrar">Cadastrar</button>
+            </div>
+            <div id="listacursos">
+                <h2>Lista de Cursos</h2>
+                <ul id="cursos">
+                </ul>
+            </div>
+                    
+            <div id="edicaoCurso" style="display: none;">
+                <h2>Editar Curso</h2>
+                <div>
+                    <label for="nomeEdicao">Nome do Curso:</label>
+                    <input type="text" placeholder="ex: Engenharia de Software" id="nomeEdicao">
+                </div>
+                <div>
+                    <label for="areaEdicao">Área de Atuação:</label>
+                    <input type="text" placeholder="ex: T.I" id="areaEdicao">
+                </div>
+                <div>
+                    <label for="duracaoEdicao">Quantidade de Períodos:</label>
+                    <input type="number" min="3" max="10" placeholder="0" id="duracaoEdicao">
+                </div>
+                <div>
+                    <label for="tipoEdicao">Tipo do Curso:</label>
+                    <select name="tipocurso" id="tipoEdicao">
+                        <option value="opcao1"></option>
+                        <option value="Bacharelado">Bacharelado</option>
+                        <option value="Licenciatura">Licenciatura</option>
+                        <option value="Tecnólogo">Tecnólogo</option>
+                    </select>
+                </div>
+                <button class="editar" id="btneditar">Salvar</button>
+                <button class="cancelar" id="btncancelar">Cancelar</button>
+            </div>
+    </div>
+
+
+        <link rel="stylesheet" href="css/estilo.css">
+        <script src="js/elementos/custom-header.js" ></script>
+        <script src="js/CadastroCurso.js"></script>
 </body>
 </html>

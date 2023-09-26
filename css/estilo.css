@@ -65,7 +65,7 @@ header {
 
 a {
     font-size: 16px;
-    color: #0e4194;
+    color: black;
     text-decoration: none;
 }
 
@@ -95,9 +95,11 @@ a {
 }
 
 .container {
-    padding-top: 8vw;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
+
 }
 
 .box3 {
@@ -114,10 +116,15 @@ a {
 .input {
     margin-left: 23px;
 }
-#divConfirmarAlteracao{
-    display: none;
-}
 
 #botaoEditarSala{
     display: none;
+}
+
+.btnUpdate{
+    display: none;
+}
+
+.tabeladiv{
+    display: flex
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela inicio</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <custom-header></custom-header>
+
+    <h1>Cadastro de Desafios</h1>
+    <div class="container">
+        <div class="box3">
+            <div class="form">
+                <div>
+                    <label for="nmDesafio">Nome do Desafio:</label>
+                    <input type="text" id="nmDesafio" placeholder="Ex. FRONTEND">
+                </div>
+                <div>
+                    <label for="Duracao">Quantidade de Horas:</label>
+                    <input type="number" id="Duracao" placeholder="Ex. 120">
+                </div>
+                <div>
+                    <label for="curso">Curso:</label>
+                    <input type="text" id="curso" placeholder="Ex. TADS">
+                </div>
+                <div>
+                    <label for="professor">Professor:</label>
+                    <input type="text" id="professor" placeholder="Ex. James">
+                </div>
+
+                <div class="navbar">
+                    <button id="btnInsertDesafio" class="btnInsert">Incluir</button>
+                
+                    <div id="divConfirmarAlteracaoDesafio">
+                        <button id="btnUpdateDesafio" class="btnUpdate">Salvar Alteração</button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="box4tabela">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th class="coluna">Id</th>
+                            <th class="coluna">Desafio</th>
+                            <th class="coluna">Horas</th>
+                            <th class="coluna">Curso</th>
+                            <th class="coluna">Professor</th>
+                            <th class="coluna">Alterar</th>
+                            <th class="coluna">Deletar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/CadastroDesafio.js"></script>
+    <script src="js/elementos/custom-header.js"></script>
+</body>
+</html>

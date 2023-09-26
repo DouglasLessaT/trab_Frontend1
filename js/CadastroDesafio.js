@@ -76,7 +76,7 @@ const confirmarAlteracaoDesafio = () => {
         if (index !== -1) {
             listaDesafio[index] = {
                 id,
-                desafio: novoDesafio,
+                nmDesafio: novoDesafio,
                 duracao: novaDuracao,
                 curso: novoCurso,
                 professor: novoProfessor,
@@ -141,7 +141,7 @@ const aoIncluirDesafio = () => {
         const id = contadorDesafio.toString(); // Transforma o contador em ID
         const objDesafio = {
             id,
-            desafio: novoDesafio,
+            nmDesafio: novoDesafio,
             duracao: novaDuracao,
             curso: novoCurso,
             professor: novoProfessor,
